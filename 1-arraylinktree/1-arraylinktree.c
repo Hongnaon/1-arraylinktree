@@ -9,6 +9,7 @@ typedef struct TreeNode {
 
 
 void GenerateArrayTree(int* tree) {
+    //list에 트리 순서에 맞는 수 입력
     int list[] = { 1, 2, 9, 3, 5, 10, 13, 4, 6, 7, 8, 11, 12, 14, 15 };
 
     for (int i = 0; i < 15; i++) {
@@ -56,8 +57,8 @@ void ArrayOrders(int tree[]) {
     printf("\n");
 }
 
-// 링크드 리스트 기반 트리 생성
-
+//노드를 만들고, 입력받은 node의 direction(0:left, 1:right)값에 따라
+//올바른 위치에 해당 노드를 배치하는 함수
 void PlaceNode(TreeNode* node, int direction, int data) {
     TreeNode* newNode = (TreeNode*)malloc(sizeof(TreeNode));
     newNode->data = data;
@@ -122,10 +123,12 @@ int main() {
     int arr[15];
     TreeNode* root = (TreeNode*)malloc(sizeof(TreeNode));
     root->data = 1;
-
+    
+    //각각의 방식(array법, link법)에 따른 트리 생성
     GenerateArrayTree(arr);
     GenerateLinkTree(root);
 
+    //각 생성한 트리를 순회
     ArrayOrders(arr);
     LinkOrders(root);
 
